@@ -12,16 +12,16 @@ import java.util.*;
 public class Elevator {
     private int currentFloor; //Current floor the elevator is on
     private int direction; //Direction that elevator is moving in
-    private RequestTracker pickupReq; //Requests to pick up from floor
-    private RequestTracker dropoffReq; //Requests to drop off to floor
+    private RequestHandler pickupReq; //Requests to pick up from floor
+    private RequestHandler dropoffReq; //Requests to drop off to floor
     private int timestamp = 0; //Internal timestamp for operations
 
     //Initializes the elevator stationary and empty of requests
     public Elevator() {
         this.currentFloor = 1;
         this.direction = 0;
-        this.pickupReq = new RequestTracker();
-        this.dropoffReq = new RequestTracker();
+        this.pickupReq = new RequestHandler();
+        this.dropoffReq = new RequestHandler();
         this.timestamp = 0;
         update();
     }
@@ -116,7 +116,7 @@ public class Elevator {
         direction = delta/Math.abs(delta); 
 
         System.out.println("-----------------------------");
-        
+
         try {
             Thread.sleep(Setting.SIMUL_TIMESTEP); //Delay between every action
         } catch (InterruptedException e) {
