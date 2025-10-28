@@ -129,10 +129,10 @@ public class Elevator {
     /**
      * Updates decision-making after state change to elevator.
      * If currently moving up or down:
-     * (1) Continue to complete pickup and dropoff requests in that direction until finished
-     * (2) Reverse direction to address requests on other side (unless no requests, then return to floor N/2)
-     * If stationary:
-     * (1) Move toward 
+     * (+) Continue to complete pickup and dropoff requests in that direction until finished
+     * (+) Reverse direction to address requests on other side (unless no requests, then return to floor N/2)
+     * If no more requests:
+     * (+) Return to middle floor to await more commands
      */
     private void update() {
 
