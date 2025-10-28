@@ -10,7 +10,6 @@ import java.util.*;
  */
 
 public class Elevator {
-    private Dispatcher dispatcher;
     private int currentFloor; //Current floor the elevator is on
     private int direction; //Direction that elevator is moving in
     private RequestHandler pickupReq; //Requests to pick up from floor
@@ -18,20 +17,12 @@ public class Elevator {
     private int timestamp = 0; //Internal timestamp for operations
 
     //Initializes the elevator stationary and empty of requests
-    public Elevator(Dispatcher dispatcher) {
-        this.dispatcher = dispatcher;
+    public Elevator() {
         this.currentFloor = 1;
         this.direction = 0;
         this.pickupReq = new RequestHandler();
         this.dropoffReq = new RequestHandler();
         this.timestamp = 0;
-        update();
-    }
-
-    /**
-     * Starts the operation of the elevator
-     */
-    public void start() {
         update();
     }
 
@@ -115,6 +106,7 @@ public class Elevator {
      * (+) Reverse direction to address requests on other side (unless no requests, then return to floor N/2)
      * If no more requests:
      * (+) Return to middle floor to await more commands
+     * @return true if the elevator's state changed, or false if idle
      */
     public boolean update() {
 
@@ -126,26 +118,26 @@ public class Elevator {
         //Address nearest floor first (if equal, addressFloor does both)
         if (nextPickup != -1 && nextDropoff != -1) {
             if (distPickup < distDropoff) {
-                addressFloor(nextPickup);
+                return addressFloor(nextPickup);
             }
             else {
-                addressFloor(nextDropoff);
+                return addressFloor(nextDropoff);
             }
         }
         else if (nextPickup != -1) {
-            addressFloor(nextPickup);
+            return addressFloor(nextPickup);
         }
         else if (nextDropoff != -1) {
-            addressFloor(nextDropoff);
+            return addressFloor(nextDropoff);
         }
         else {
             //Both invalid, flip direction if more requests, otherwise return to middle floor
             if (pickupReq.isEmpty() && dropoffReq.isEmpty()) {
-                addressFloor(Setting.NUM_FLOORS / 2); //Return to middle
+                return addressFloor(Setting.NUM_FLOORS / 2); //Return to middle
             } else {
                 direction = -direction; //Sweep other side
+                return true;
             }
-            update();
         }
         
     }
