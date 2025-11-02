@@ -81,6 +81,10 @@ public class RequestHandler {
         return req.toString();
     }
 
+    public int getSize() {
+        return req.size();
+    }
+    
     /*
      * Stores requests at floor and given time
      */
