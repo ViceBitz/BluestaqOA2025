@@ -10,6 +10,7 @@ import java.util.*;
  */
 
 public class Elevator {
+    private int id; //Unique identifier for every elevator
     private int currentFloor; //Current floor the elevator is on
     private int direction; //Direction that elevator is moving in
     private RequestHandler pickupReq; //Requests to pick up from floor
@@ -17,7 +18,8 @@ public class Elevator {
     private int timestamp = 0; //Internal timestamp for operations
 
     //Initializes the elevator stationary and empty of requests
-    public Elevator() {
+    public Elevator(int id) {
+        this.id = id;
         this.currentFloor = 1;
         this.direction = 0;
         this.pickupReq = new RequestHandler();
@@ -50,7 +52,7 @@ public class Elevator {
      */
     private void completePickup(int floor) {
         if (pickupReq.completeRequest(floor)) {
-            System.out.println("Elevator picked up guests at floor " + floor);
+            System.out.println("Elevator " + id + " picked up guests at floor " + floor);
         }
     }
 
@@ -60,7 +62,7 @@ public class Elevator {
      */
     private void completeDropoff(int floor) {
         if (dropoffReq.completeRequest(floor)) {
-            System.out.println("Elevator dropped off guests at floor " + floor);
+            System.out.println("Elevator " + id + " dropped off guests at floor " + floor);
         }
     }
 
@@ -77,7 +79,7 @@ public class Elevator {
             direction = 0;
             return false;
         }
-        System.out.println("Elevator moved to floor " + floor);
+        System.out.println("Elevator " + id + " moved to floor " + floor);
 
         //Complete any pickups or dropoffs (note: RequestTracker handles non-existence)
         completePickup(floor);
@@ -132,7 +134,7 @@ public class Elevator {
         }
         else {
             //Both invalid, flip direction if more requests, otherwise return to middle floor
-            if (pickupReq.isEmpty() && dropoffReq.isEmpty()) {
+            if (getNumRequests() == 0) {
                 return addressFloor(Setting.NUM_FLOORS / 2); //Return to middle
             } else {
                 direction = -direction; //Sweep other side
@@ -140,6 +142,22 @@ public class Elevator {
             }
         }
         
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public int getFloor() {
+        return currentFloor;
+    }
+
+    public int getNumRequests() {
+        return pickupReq.getSize() + dropoffReq.getSize();
     }
 
     public String toString() {
