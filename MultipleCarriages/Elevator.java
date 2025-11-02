@@ -74,10 +74,11 @@ public class Elevator {
     private boolean addressFloor(int floor) {
         System.out.println("-----------------------------");
 
-        //If going to same floor as current, prompt user for more actions
         if (floor == currentFloor) {
-            direction = 0;
-            return false;
+            //If going to same floor as current and no more requests, reached steady-state
+            if (getNumRequests() == 0) {
+                return false;
+            }
         }
         System.out.println("Elevator " + id + " moved to floor " + floor);
 
@@ -88,7 +89,7 @@ public class Elevator {
         //Update elevator states
         int delta = floor - currentFloor;
         currentFloor = floor;
-        direction = delta/Math.abs(delta); 
+        direction = delta == 0 ? 0 : delta/Math.abs(delta); 
 
         System.out.println("-----------------------------");
 
