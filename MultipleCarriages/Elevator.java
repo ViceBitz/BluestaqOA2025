@@ -4,9 +4,6 @@ import java.util.*;
 /**
  * An instant-moving elevator that efficiently transports guests to different floors
  * given pick-up and drop-off requests.
- * 
- * @author Victor Gong
- * @version October 26, 2025
  */
 
 public class Elevator {
