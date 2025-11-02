@@ -3,7 +3,9 @@
 ## Summary
 This project models a self-sustaining elevator system with three key stages: requests, assignment, and transit. Development was iterative. I started with a simple single-carriage MVP, then expanded to a centralized dispatcher controlling multiple elevators, and finally added virtual guests and carrying-capacity logic for realistic testing.
 
-Read the project outline PDF for more information on specifics. Flowcharts included!
+**Read the project outline PDF for more information (flowcharts included)**
+
+**⚠️ Note: Final version of project is in "VirtualGuests" folder, others are iterative versions**
 
 Key ideas:
 - Simple sweep strategy (one direction, then reverse) for elevator operation

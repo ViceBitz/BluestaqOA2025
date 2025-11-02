@@ -1,7 +1,6 @@
 package VirtualGuests;
 
 import java.util.*;
-import java.math.*;
 
 public class Dispatcher {
     private Elevator[] elevators;
@@ -12,7 +11,7 @@ public class Dispatcher {
         for (int i=0;i<elevators.length;i++) {
             elevators[i] = new Elevator(this, i);
         }
-        requestQueue = new LinkedList();
+        requestQueue = new LinkedList<>();
     }
     
     /**

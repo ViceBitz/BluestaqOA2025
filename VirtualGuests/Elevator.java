@@ -1,5 +1,4 @@
 package VirtualGuests;
-import java.util.*;
 
 /**
  * An instant-moving elevator that efficiently transports guests to different floors
