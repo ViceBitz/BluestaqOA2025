@@ -46,3 +46,23 @@ Key ideas:
 ### **Simulation**
 - Represents an automated guest request: origin floor, destination floor, and number of guests.
 - Used to stress-test capacity and scheduling.
+
+---
+
+## Future Features
+
+### Smarter Scheduling
+- Predictive elevator logic to skip floors if capacity will be exceeded.
+- Consider capacity through dispatcher with reserved slots per elevator.
+
+### Performance & Concurrency
+- Multithreading for concurrent elevator updates within the dispatcher.
+
+### Visualization & Simulation
+- Replace console output with a live UI.
+- Map passenger flow to analyze elevator efficiency.
+- User dashboard for pickup and dropoff requests.
+- Use timestamps for extended analysis beyond elevator decision-making.
+
+### Physical Integration
+- Test the system with a real-world elevator model.
