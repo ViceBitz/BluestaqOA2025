@@ -1,10 +1,12 @@
-package SimpleElevatorMVP;
+package VirtualGuests;
 import java.util.*;
 
 /**
  * Makes textual user input easy with collection of methods for console I/O
  */
 public final class TextPrompt {
+    private static final Scanner sc = new Scanner(System.in);
+
     /**
      * Get numerical user input in the range lowValid to highValid with prompt message
      * @param prompt prompt message
@@ -16,8 +18,8 @@ public final class TextPrompt {
         boolean validInput = false;
         int response = -1;
         while (!validInput) {
+            validInput = false;
             System.out.println(prompt);
-            Scanner sc = new Scanner(System.in);
             String line = sc.nextLine();
             try {
                 response = Integer.parseInt(line);
@@ -42,10 +44,17 @@ public final class TextPrompt {
     public static Vector<Integer> promptSequence(String prompt, int lowValid, int highValid, String delim) {
         boolean validInput = false;
         Vector<Integer> numSequence = new Vector<>();
+        
         while (!validInput) {
+            validInput = false;
             System.out.println(prompt);
-            Scanner sc = new Scanner(System.in);
             String line = sc.nextLine();
+
+            //Empty response
+            if (line.isEmpty()) {
+                return new Vector<>(); 
+            }
+            
             String[] seq = line.split(delim);
             try {
                 validInput = true;
