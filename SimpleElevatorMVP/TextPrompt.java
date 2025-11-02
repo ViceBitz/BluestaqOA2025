@@ -1,4 +1,4 @@
-package VirtualGuests;
+package SimpleElevatorMVP;
 import java.util.*;
 
 /**
