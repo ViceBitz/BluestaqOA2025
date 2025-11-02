@@ -15,6 +15,15 @@ Key ideas:
 
 ---
 
+## Usage
+- Clone the repository:
+  ```bash
+  git clone https://github.com/ViceBitz/BluestaqOA2025
+  ```
+- Run Main.java to see the elevator system in action across different iterations
+
+---
+
 ## Features
 - **MVP: Single Elevator**: Elevator handles pickup/dropoff requests, sweeps floors, clears requests, then waits for more input.
 - **Multicarriage system**: Centralized dispatcher assigns requests to multiple elevators that operate in tandem.
