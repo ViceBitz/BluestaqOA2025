@@ -3,6 +3,10 @@ package MultipleCarriages;
 import java.util.*;
 import java.math.*;
 
+/*
+ * Responsible for prompting user for elevator requests and
+ * coordinating elevator for pick-up and drop-off efficiently
+ */
 public class Dispatcher {
     private Elevator[] elevators;
     public Dispatcher() {
